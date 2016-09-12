@@ -1,0 +1,14 @@
+const React = require('react') /* this will make sure React is not set as a global variable - pull it from NPM instead */
+const { Link } = require('react-router')
+
+const Landing = function () { /* this is stateless, rather than a createClass (see MyTitle.jsx), and so doesn't carry extra baggage */
+  return (/* can only have one parent */
+    <div className='home-info'>
+      <h1 className='title'>React Fake App</h1>
+      <input className='search' type='text' placeholder='Search' />
+      <Link to='/search' className='browse-all'> or Browse All</Link>
+    </div>
+  )
+}
+
+module.exports = Landing

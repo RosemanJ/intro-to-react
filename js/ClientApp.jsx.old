@@ -1,0 +1,24 @@
+const React = require('react') /* this will make sure React is not set as a global variable - pull it from NPM instead */
+const ReactDOM = require('react-dom') /* this will make sure ReactDOM is not set as a global variable - pull it from NPM instead */
+const MyTitle = require('./MyTitle')
+
+const MyFirstComponent = function() {/* this is stateless, rather than a createClass (see MyTitle.jsx), and so doesn't carry extra baggage */
+    return (/* can only have one parent */
+        <div>
+            <MyTitle title='Whatever' color='green' />
+            <MyTitle title='Whomever' color='red' />
+            <MyTitle title='Wherever' color='blue' />
+        </div>
+    )
+}
+
+const MyFirstArrowComponent = () => (/* arrow function causes implicit return, so return not necessary */
+    <div>
+        <MyTitle title='Arrow 1' color='green' />
+        <MyTitle title='Arrow 2' color='red' />
+        <MyTitle title='Arrow 3' color='blue' />
+    </div>
+)
+
+ReactDOM.render(<MyFirstComponent />, document.getElementById('app1'))
+ReactDOM.render(<MyFirstArrowComponent />, document.getElementById('app2'))

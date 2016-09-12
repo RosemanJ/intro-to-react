@@ -1,0 +1,16 @@
+var React = require('react') /* this will make sure React is not set as a global variable - pull it from NPM instead */
+var div = React.DOM.div
+var h1 = React.DOM.h1
+
+/* composite component */
+var MyTitle = React.createClass({
+  render () {
+    return (/* can only return one element, so maybe get in the habit of always using a wrapper? */
+        div(null,
+            h1({style: {color: this.props.color}}, this.props.title)
+        )
+    )
+  }
+})
+
+module.exports = MyTitle
