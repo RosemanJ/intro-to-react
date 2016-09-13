@@ -6,7 +6,7 @@ const Search = require('../js/Search')
 const ShowCard = require('../js/ShowCard')
 const {shallow, mount} = require('enzyme')
 const {shows} = require('../public/data')
-const {store, rootReducer} = require('../js/store')
+const {rootReducer} = require('../js/store')
 
 xdescribe('First Test!', () => {
   it('should pass', () => {
