@@ -38,7 +38,6 @@ app.use((req, res) => {
     } else {
       res.status(404).send('Not found!')
     }
-
   })
 })
 

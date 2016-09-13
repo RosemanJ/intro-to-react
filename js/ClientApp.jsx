@@ -16,6 +16,7 @@ const rootRoute = {
   indexRoute: {
     getComponent (location, cb) {
       require.ensure([], (error) => {
+        if (error) throw error
         cb(null, require('./landing'))
       })
     }
@@ -25,6 +26,7 @@ const rootRoute = {
       path: 'search',
       getComponent (location, cb) {
         require.ensure([], (error) => {
+          if (error) throw error
           cb(null, require('./search'))
         })
       }
@@ -33,6 +35,7 @@ const rootRoute = {
       path: 'details/:id',
       getComponent (location, cb) {
         require.ensure([], (error) => {
+          if (error) throw error
           cb(null, require('./details'))
         })
       }

@@ -1,6 +1,6 @@
 const React = require('react')
 const Header = require('./header')
-const axios = require('axios')
+const axios = require('axios') // ajax client that uses promises - makes requests and returns promise with all expected data
 const {connector} = require('./store')
 
 class Details extends React.Component {

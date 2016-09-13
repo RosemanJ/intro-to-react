@@ -82,7 +82,7 @@ webpackJsonp([3],{
 
 	var React = __webpack_require__(1);
 	var Header = __webpack_require__(251);
-	var axios = __webpack_require__(253);
+	var axios = __webpack_require__(253); // ajax client that uses promises - makes requests and returns promise with all expected data
 
 	var _require = __webpack_require__(225);
 
