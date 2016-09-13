@@ -14,8 +14,6 @@ const ShowCard = (props) => (
   </Link>
 )
 
-const {string} = React.PropTypes
-
 ShowCard.propTypes = {
   show: React.PropTypes.object.isRequired
 }
