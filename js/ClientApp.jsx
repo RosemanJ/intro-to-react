@@ -1,32 +1,56 @@
 const React = require('react')
-const Landing = require('./landing')
-const Search = require('./search')
 const Layout = require('./layout')
-const Details = require('./details')
-const {Router, Route, IndexRoute, browserHistory} = require('react-router')
+const {Router, browserHistory} = require('react-router')
 const {store} = require('./store')
 const {Provider} = require('react-redux')
 
-const myRoutes = () => (
-  <Route path='/' component={Layout}>
-    <IndexRoute component={Landing} />
-    <Route path='/search' component={Search} />
-    <Route path='/details/:id' component={Details} />
-  </Route>
-)
+if (typeof module !== 'undefined' && module.require) {
+  if (typeof require.ensure === 'undefined') {
+    require.ensure = require('node-ensure') // shim for node.js, async code on server doesn't make sense but does on client. makes node-ensure calls synchronous
+  }
+}
+
+const rootRoute = {
+  component: Layout,
+  path: '/',
+  indexRoute: {
+    getComponent (location, cb) {
+      require.ensure([], (error) => {
+        cb(null, require('./landing'))
+      })
+    }
+  },
+  childRoutes: [
+    {
+      path: 'search',
+      getComponent (location, cb) {
+        require.ensure([], (error) => {
+          cb(null, require('./search'))
+        })
+      }
+    },
+    {
+      path: 'details/:id',
+      getComponent (location, cb) {
+        require.ensure([], (error) => {
+          cb(null, require('./details'))
+        })
+      }
+    }
+  ]
+}
 
 const App = React.createClass({
   render () {
     return (
       <Provider store={store}>
-        <Router history={browserHistory}>
-          {myRoutes()}
-        </Router>
+        <Router history={browserHistory} routes={rootRoute} />
       </Provider>
     )
   }
 })
 
-App.Routes = myRoutes
+App.Routes = rootRoute
+App.History = browserHistory
 
 module.exports = App
